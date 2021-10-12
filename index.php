@@ -10,6 +10,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
         <title>GO Uniform</title>
+        <link rel="icon"  type="image/png" sizes="16×16" href="pictures/Logo2.png">
         <?php include "headlink.php" ?>
         <style type="text/css">
             h1 {

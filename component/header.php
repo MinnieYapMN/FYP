@@ -321,7 +321,7 @@
             <div style="width: 40%;"></div>
             
             <div class="header-logo-container">
-                <a href="homepage.php"><img src="pictures/Logo3.png" id="header-logo"/> </a>
+                <a href="index.php"><img src="pictures/Logo3.png" id="header-logo"/> </a>
             </div>
             
             <div class="header-icon-container">
@@ -398,60 +398,8 @@
         </div>
        <div class="header-nav-container">
             <div class="header-nav">
-                <a href="homepage.php" class="active">Home</a>
+                <a href="index.php" class="active">Home</a>
             </div>
-            
-            <div class="header-nav">
-                <a href="aboutUs.php">About Us</a>
-            </div>
-            
-            <div class="header-nav dropdown">
-                <a href="productPage.php?category_id=7">
-                    Our Products
-                    <i class="fa fa-caret-down ml-3" aria-hidden="true"></i>
-                </a>
-                <div class="dropdown-content">
-                    <div id="dropdown-link" class="dropdown2">
-                        <a href="productPage.php?category_id=8">
-                            <div class="tops-bottom-link">
-                                Tops <i class='fas fa-angle-right ml-3'></i>
-                            </div>
-                            
-                        </a>
-                        <div class="dropdown-content-tops">
-                            <div id="dropdown-link2">
-                                <a href="productPage.php?category_id=1">Women's</a>
-                            </div>
-                            <div id="dropdown-link2">
-                                <a href="productPage.php?category_id=3">Men's</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div id="dropdown-link" class="dropdown3">
-                        <a href="productPage.php?category_id=9" >
-                            <div class="tops-bottom-link">
-                                Bottom <i class='fas fa-angle-right ml-3'></i>
-                            </div>
-                        </a>
-                        <div class="dropdown-content-bottom">
-                            <div id="dropdown-link3">
-                                <a href="productPage.php?category_id=2">Women's</a>
-                            </div>
-                            <div id="dropdown-link3">
-                                <a href="productPage.php?category_id=4">Men's</a>
-                            </div>
-                        </div>
-                    </div>     
-                    
-                    <div id="dropdown-link">
-                       <a href="productPage.php?category_id=5">Hats</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </header>
 
 <script>

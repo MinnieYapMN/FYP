@@ -43,6 +43,10 @@ and open the template in the editor.
             background-color: #e56c82;
             border-color: #e56c82;
         }
+        
+        a:hover {
+            color: #9C9C9C;
+        }
     </style>
 
        <?php

@@ -160,16 +160,15 @@ and open the template in the editor.
                     <br>
                     <form>
 
-                        <h1>"People in uniform always look so great."</h>
-                            <p>
-                                <span class="auto-style1">
-                                    <a href="productPage.php?category_id=8"">&nbsp;More information...</a> </p>
+                        <h1>"People in uniform always look so great."</h1>
+                        <p>
+                            <span class="auto-style1">
+                                <a href="productPage.php?category_id=8"">&nbsp;More information...</a> 
                             </span>
-                            <img class="img-fluid" src="pictures/hp.jpg" alt="Responsive image">
-                            <br>
-                            </div>
-                            <?php include "component/footer.php"; ?>
-     </body>
-  </html>
-
-
+                        </p>
+                        <img class="img-fluid" src="pictures/hp.jpg" alt="Responsive image" style="width: 100%">
+                        <br>
+                        </div>
+                        <?php include "component/footer.php"; ?>
+                        </body>
+                        </html>

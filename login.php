@@ -44,6 +44,11 @@ and open the template in the editor.
             border-color: #e56c82;
         }
         
+        .loginBtn:hover{
+            color: #fff;
+            background-color: #a94442;
+        }
+        
         a:hover {
             color: #9C9C9C;
         }

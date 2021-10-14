@@ -94,6 +94,11 @@ and open the template in the editor.
             @media only screen and (max-width: 300px) {
                 .text {font-size: 11px}
             }
+            .slideImg{
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
         </style>
     </head>
     <body>
@@ -104,17 +109,17 @@ and open the template in the editor.
 
                     <div class="mySlides fade"  style="height:520px;">
                         <div class="numbertext">1 / 3</div>
-                        <img src="pictures/slide1.jpg"  height=520 width="100%">
+                        <img class="d-block w-100 slideImg" src="pictures/slide1.jpg"  height=520 style="width:100%">
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
-                        <img src="pictures/slide2.jpg" height=520 style="width:100%">
+                        <img class="d-block w-100 slideImg" src="pictures/slide2.jpg" height=520 style="width:100%">
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 3</div>
-                        <img src="pictures/slide3.jpg" height=520 style="width:100%">
+                        <img class="d-block w-100 slideImg" src="pictures/slide3.jpg" height=520 style="width:100%">
                     </div>
 
                 </div>
@@ -146,7 +151,7 @@ and open the template in the editor.
                         }
                         slides[slideIndex - 1].style.display = "block";
                         dots[slideIndex - 1].className += " active";
-                        setTimeout(showSlides, 2000); // Change image every 2 seconds
+                        setTimeout(showSlides, 5000); // Change image every 5 seconds
                     }
                 </script>
 

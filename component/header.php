@@ -101,9 +101,9 @@
         color: #6f849e;
     }
     
-    .active{
+/*    .active{
         color: #6f849e;
-    }
+    }*/
     
     .tops-bottom-link{
         display: flex;
@@ -387,11 +387,6 @@
                                 <a href="forget_pass.php">Forget Password</a>
                             </div>
                         <?php endif ?>
-                    </div>
-        
-                    <!--Shopping Cart-->
-                    <div class="header-icon">
-                        <a href="shoppingCart.php"><i class='fas fa-shopping-bag' id="header-shopping-icon"></i></a>
                     </div>
                 </div>
             </div>

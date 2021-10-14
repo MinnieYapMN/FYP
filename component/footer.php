@@ -45,8 +45,6 @@
         font-size: 35px;
     }
     
-   
-    
     .footerNav{
         height: 30px;
         display: flex;

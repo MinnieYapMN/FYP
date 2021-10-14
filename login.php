@@ -9,6 +9,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
+        <link rel="icon"  type="image/png" sizes="16×16" href="pictures/Logo2.png">
         <?php include "headlink.php" ?>
 
     </head>
@@ -17,6 +18,8 @@ and open the template in the editor.
         #login .container #login-row #login-column #login-box {
             margin-top:50px;
             margin-bottom: 50px;
+            margin-left: auto;
+            margin-right: auto;
             max-width: 600px;
             height: 420px;
             border: 1px solid #9C9C9C;
@@ -24,6 +27,9 @@ and open the template in the editor.
         }
         #login .container #login-row #login-column #login-box #login-form {
             padding: 20px;
+        }
+        .form{
+            text-align: center;
         }
 
         #login-column{
@@ -114,8 +120,8 @@ and open the template in the editor.
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                                          <input type="text" name="login_email" id="email" class="form-control"  placeholder="Enter Your Email" required="required">
                                         </div>
-                                        <input type="text" name="login_email" id="email" class="form-control"  placeholder="Enter Your Email" required="required">
                                     </div>    
                                 </div>
                                 
@@ -123,10 +129,11 @@ and open the template in the editor.
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1" ><i class="fa fa-lock showHide_password"></i></span>
+                                            <input type="password" name="login_password" id="password" class="form-control" placeholder="Enter Your Password" required="required">
                                         </div>
-                                        <input type="password" name="login_password" id="password" class="form-control" placeholder="Enter Your Password" required="required">
                                     </div>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <a href="forget_pass.php" class="text-dark ">Forget Password</a>
                                     <a href="register.php" class="text-dark float-right">Register here</a>
@@ -135,6 +142,7 @@ and open the template in the editor.
                                 <div class="d-flex justify-content-center mb-2">
                                     <input type="submit" name="submit" class="btn btn-dark btn-md float-right loginBtn" value="Login">
                                 </div>
+                            </form>
                         </div>  
                     </div>
                 </div>

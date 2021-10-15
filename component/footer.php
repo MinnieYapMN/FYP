@@ -4,12 +4,13 @@
         flex-direction: row;
         padding: 40px 60px;
         justify-content: space-between;
-        background-color: #ebebeb;
+        background-color: #fff;
         box-shadow: 0px 0px 10px #cccccc;
+        width: 100%;
     }
     
     /*container*/
-    .footerBox-logo{
+    .footerBox-logo{;
         width: 40%;
         text-align: justify;
     }
@@ -86,7 +87,7 @@
     
     /*separator*/
     .footer-separator{
-        background-color: #8b9eb5;
+        background-color: #fff;
         width: 1px;
         margin: 0px 10px;
     }
@@ -235,7 +236,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                © 2021 Copyright GO
+                © 2021 Copyright GO Uniform Trading SDN BHD
             </div>
         </div>
         

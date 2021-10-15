@@ -30,7 +30,7 @@
     }
 
     .header-logo-container{
-        width: 50%;
+        width: 100%;
         display: flex;
         justify-content: center;
     }
@@ -382,9 +382,6 @@
                         <?php if (!isset($_SESSION['id'])): ?>
                             <div id="dropdown-profile-link">
                                 <a href="login.php">Login</a>
-                            </div>
-                            <div id="dropdown-profile-link">
-                                <a href="register.php">Register</a>
                             </div>
                             <div id="dropdown-profile-link">
                                 <a href="forget_pass.php">Forget Password</a>

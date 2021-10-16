@@ -1,7 +1,7 @@
 <style>
     #headerStyle{
-        height: 150px;
-        background-color: white;
+        height: 80px;
+        width: 100%;
     }
 
     .header-container{
@@ -11,6 +11,7 @@
         top: 0px;
         width: 100%;
         z-index: 1;
+        right: 0px;
     }
 
     /*logo*/
@@ -38,14 +39,14 @@
     /*icon*/
     .header-icon-container{
         width: 40%;
-        height: 64px;
+        height: 70px;
         display: flex;
         align-items: center;
         justify-content: flex-end;
     }
 
     .header-icon-box{
-        width: 166px;
+        width: 100px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -66,145 +67,11 @@
         cursor: pointer;
         margin-right: 40px;
     }
-
-    /*#header-shopping-icon{
-        width: 33px;
-        height: 28px;
-        margin-top: 3px;
-        cursor: pointer;
-    }*/
-
-    /*navigation*/
-    .header-nav-container{
-        width: 100%;
-        height: 55px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0px 30px;
-        justify-content: center;
-        background-color: white;
-        border-bottom: 1px solid #cfcaca;
-    }
-
-    .header-nav{
-        height: 100%;
-        text-transform: uppercase;
-        font-family: Bodoni MT;
-        margin-right: 60px;
-        font-size: 21px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
-
-    .header-nav:hover{
-        color: #6f849e;
-    }
-
-    /*    .active{
-            color: #6f849e;
-        }*/
-
     .tops-bottom-link{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-    }
-
-    /* Dropwdown */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content #dropdown-link {
-        color: black;
-        padding: 10px 16px;
-        text-decoration: none;
-        display: block;
-        background-color: white;
-        font-family: Candara;
-        font-size: 18px;
-        text-transform: capitalize;
-    }
-
-    #dropdown-link:hover {
-        color: #6f849e;
-        background-color: #ebebeb;
-    }
-    .dropdown:hover .dropdown-content {
-        margin-top: 195px;
-        display: block;
-    }
-
-    /* Tops Dropdown */
-    .dropdown-content-tops {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content-tops #dropdown-link2 {
-        color: black;
-        padding: 10px 16px;
-        text-decoration: none;
-        display: block;
-        background-color: white;
-        font-family: Candara;
-        font-size: 18px;
-        text-transform: capitalize;
-    }
-
-    #dropdown-link2:hover {
-        color: #6f849e;
-        background-color: #ebebeb;
-    }
-
-    .dropdown2:hover .dropdown-content-tops {
-        margin-left: 145px;
-        display: block;
-        top: 0px;
-    }
-
-    /* Bottom Dropdown */
-    .dropdown-content-bottom {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content-bottom #dropdown-link3 {
-        color: black;
-        padding: 10px 16px;
-        text-decoration: none;
-        display: block;
-        background-color: white;
-        font-family: Candara;
-        font-size: 18px;
-        text-transform: capitalize;
-    }
-
-    #dropdown-link3:hover {
-        color: #6f849e;
-        background-color: #ebebeb;
-    }
-
-    .dropdown3:hover .dropdown-content-bottom{
-        margin-left: 145px;
-        display: block;
-        top: 46px;
     }
 
     /* Profile Dropdown */
@@ -278,7 +145,7 @@
         color: white;
         width: 100%;
         height: 200px;
-        padding: 20px 130px;
+        padding: 20px 100px;
     }
 
     .search-close-btn{
@@ -322,13 +189,13 @@
             <div style="width: 40%;"></div>
 
             <div class="header-logo-container">
-                <a href="index.php"><img src="pictures/Logo3.png" id="header-logo"/> </a>
+                <a href="homepage.php"><img src="pictures/Logo3.png" id="header-logo"/> </a>
             </div>
 
             <div class="header-icon-container">
-                <?php if (isset($_SESSION['id'])): ?>
+                <?php if (isset($_SESSION['staff_id'])): ?>
                     <div class="col customercol justify-content-center d-flex">
-                        <p style="color:black; margin-bottom: 0px; margin-top: 30px;font-family: Bodoni MT;font-size:20px;" >Welcome, <?php echo $_SESSION['first_name']; ?>!! &nbsp;</p>
+                        <p style="color:black; margin-bottom: 0px; margin-top: 30px;font-family: Bodoni MT;font-size:20px;" >Welcome, <?php echo $_SESSION['staff_name']; ?>!! &nbsp;</p>
                     </div>
                 <?php endif ?>
                 <br>
@@ -344,7 +211,7 @@
                             </div>
 
                             <div class="search-input-container">
-                                <form action="productPage.php?category_id=7" method="post" onkeypress="if (event.keyCode === 13) {
+                                <form action="index.php?" method="post" onkeypress="if (event.keyCode === 13) {
                                             this.submit();
                                         }">
                                     <input type="text" placeholder="Search" id="search-input" name="search-input" />
@@ -391,10 +258,6 @@
                 </div>
             </div>
         </div>
-        <div class="header-nav-container">
-            <div class="header-nav">
-                <a href="index.php" class="active">Home</a>
-            </div>
             </header>
 
             <script>

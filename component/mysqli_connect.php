@@ -11,3 +11,4 @@
     
     mysqli_set_charset($dbc, 'utf8');
      
+?>

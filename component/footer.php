@@ -2,16 +2,15 @@
     .footerContainer{
         display: flex;
         flex-direction: row;
-        padding: 40px 60px;
+        padding: 10px 60px;
         justify-content: space-between;
         background-color: #fff;
         box-shadow: 0px 0px 10px #cccccc;
-        width: 100%;
     }
     
     /*container*/
-    .footerBox-logo{;
-        width: 40%;
+    .footerBox-logo{
+        width: 24%;
         text-align: justify;
     }
     
@@ -44,6 +43,11 @@
         color: #414356;
         font-family: Gabriola;
         font-size: 35px;
+    }
+    
+    .logoFooter{
+        width: 50%; 
+        border: 1px solid white;
     }
     
     .footerNav{
@@ -87,7 +91,7 @@
     
     /*separator*/
     .footer-separator{
-        background-color: #fff;
+        background-color: #8b9eb5;
         width: 1px;
         margin: 0px 10px;
     }
@@ -204,7 +208,7 @@
 </style>
 
 <footer>
-    <div class="footerContainer">
+    <div class="footerContainer my-5">
         <div class="footerBox-logo" id="logo-slogan">
             <div>
                 <img src="pictures/Logo2.png" class="logoFooter"/>
@@ -215,13 +219,7 @@
             <div class="footerNav">
                 <div class="footerBtn" style="padding-left: 0px;" onclick="window.location.href='homepage.php'">
                     Home
-                </div>
-                
-                <div class="footerLine"></div>
-                
-                <div class="footerBtn" onclick="window.location.href='aboutUs.php'">
-                    About Us
-                </div>
+                </div>            
                 
                 <div class="footerLine"></div>
                 

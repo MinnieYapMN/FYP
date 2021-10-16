@@ -16,7 +16,7 @@ and open the template in the editor.
 
     <style>
         body{
-             background-color: #EAEAEA !important;
+            background-color: #EAEAEA !important;
         }
         #login .container #login-row #login-column #login-box {
             margin-top:50px;
@@ -35,9 +35,9 @@ and open the template in the editor.
             text-align: center;
         }
 
-        #login-column{
-            /margin-top:140px;/
-        }
+        /*#login-column{
+            margin-top:140px;
+        }*/
 
         .loginBtn{
             height:50px;
@@ -60,47 +60,58 @@ and open the template in the editor.
             color: #9C9C9C;
         }
     </style>
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        require ('component/mysqli_connect.php');
-        $errors = array();
-        if (!empty($_POST['login_email'])) {
-            $e = mysqli_real_escape_string($dbc, $_POST['login_email']);
-        } else {
-            $e = FALSE;
-            $error[] = 'You forgot to enter your email address.';
-        }
-
-
-        if (!empty($_POST['login_password'])) {
-            $p = mysqli_real_escape_string($dbc, $_POST['login_password']);
-        } else {
-            $p = FALSE;
-            $error[] = 'You forgot to enter your password.';
-        }
-
-        if ($e && $p) {
-            $q = "SELECT * FROM users WHERE email='$e' AND password=SHA1('$p')";
-            $r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
-
-            if (mysqli_num_rows($r) == 1) {
-
-                $_SESSION = mysqli_fetch_array($r, MYSQLI_ASSOC);
-                mysqli_free_result($r);
-                mysqli_close($dbc);
-
-
-                $url = 'index.php';
-                ob_end_clean();
-                header("Location: $url");
-                exit();
+   <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            require ('component/mysqli_connect.php');
+            $errors =array();
+            if (!empty($_POST['login_email'])) {
+                   $e = mysqli_real_escape_string ($dbc, $_POST['login_email']);
             } else {
-                $error[] = 'Either the username and password entered do not match!';
+                   $e = FALSE;
+                   $error[] = 'You forgot to enter your email address.';
             }
-        } else {
-            $error[] = 'Please try again.';
-        } mysqli_close($dbc); }
+
+
+            if (!empty($_POST['login_password'])) {
+                    $p = mysqli_real_escape_string ($dbc, $_POST['login_password']);
+            } else {
+                    $p = FALSE;
+                    $error[] = 'You forgot to enter your password.';
+            }
+
+            if ($e && $p) { 
+                   $q = "SELECT * FROM staff WHERE email='$e' AND password=SHA1('$p')";		
+                   $r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
+
+                   if (mysqli_num_rows($r) == 1) { 
+
+                           $_SESSION = mysqli_fetch_array ($r, MYSQLI_ASSOC); 
+                           mysqli_free_result($r);
+                           mysqli_close($dbc);
+
+
+                           $url = 'homepage.php'; 
+                           ob_end_clean(); 
+                           header("Location: $url");
+                           exit(); 
+
+                   } 
+                   
+                   else { 
+                           $error[] = 'Either the email address and password entered do not match!';
+                   }
+
+           } 
+           
+           else { 
+                  $error[]= 'Please try again.';
+           }
+
+           mysqli_close($dbc);
+
+    }   
+        
+    
     ?>
 
 
@@ -117,8 +128,6 @@ and open the template in the editor.
                                     <img src="pictures/Logo1.png" style="width:150px; height:150px;">
                                 </div>
                                 <h3 class="text-center text-dark">Login</h3>
-                                
-
 
                                 <div class="form-group">
                                     <div class="input-group mt-3">
@@ -140,11 +149,11 @@ and open the template in the editor.
                                 <br>
                                 <div class="form-group">
                                     <a href="forget_pass.php" class="text-dark ">Forget Password</a>
-                                   
+
                                 </div>
 
                                 <div class="d-flex justify-content-center mb-2">
-                                     <br>
+                                    <br>
                                     <input type="submit" name="submit" class="btn btn-dark btn-md float-right loginBtn" value="Login">
                                 </div>
                             </form>
@@ -171,4 +180,4 @@ and open the template in the editor.
 
     });
 </script>
-    
+

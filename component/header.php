@@ -193,7 +193,7 @@
             </div>
 
             <div class="header-icon-container">
-                <?php if (isset($_SESSION['staff_id'])): ?>
+                <?php if (isset($_SESSION['position'])): ?>
                     <div class="col customercol justify-content-center d-flex">
                         <p style="color:black; margin-bottom: 0px; margin-top: 30px;font-family: Bodoni MT;font-size:20px;" >Welcome, <?php echo $_SESSION['staff_name']; ?>!! &nbsp;</p>
                     </div>
@@ -211,7 +211,7 @@
                             </div>
 
                             <div class="search-input-container">
-                                <form action="index.php?" method="post" onkeypress="if (event.keyCode === 13) {
+                                <form action="index.php" method="post" onkeypress="if (event.keyCode === 13) {
                                             this.submit();
                                         }">
                                     <input type="text" placeholder="Search" id="search-input" name="search-input" />
@@ -227,7 +227,7 @@
                         <i class="material-icons" id="header-profile-icon">person</i>
                     </button>
                     <div class="dropdown-content-profile">
-                        <?php if (isset($_SESSION['id'])): ?>
+                        <?php if (isset($_SESSION['staff_id'])): ?>
 
                             <div id="dropdown-profile-link">
                                 <a href="logout.php">Logout</a>
@@ -246,7 +246,7 @@
 
                         <?php endif ?>
 
-                        <?php if (!isset($_SESSION['id'])): ?>
+                        <?php if (!isset($_SESSION['staff_id'])): ?>
                             <div id="dropdown-profile-link">
                                 <a href="login.php">Login</a>
                             </div>

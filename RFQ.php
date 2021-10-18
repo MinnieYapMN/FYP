@@ -1,14 +1,24 @@
 <?php
 require('component/mysqli_connect.php');
 $Array_account = array();
+$Array_account1 = array();
 $sql = "SELECT * FROM vendor";
+$sql1 = "SELECT * FROM company";
 $result = $dbc->query($sql);
+$result1 = $dbc->query($sql1);
 if ($result->num_rows > 0) {
     while ($row = mysqli_fetch_array($result)) {
         array_push($Array_account, $row);
     }
 }
 echo '<script>var Array_account = ' . json_encode($Array_account) . ';</script>';
+
+if ($result1->num_rows > 0) {
+    while ($row = mysqli_fetch_array($result1)) {
+        array_push($Array_account1, $row);
+    }
+}
+echo '<script>var Array_account1 = ' . json_encode($Array_account1) . ';</script>';
 if (isset($_POST['submit'])) {
     $pr_id = $_POST['pr_id'];
     $material_details = $_POST['material_details'];
@@ -129,7 +139,7 @@ and open the template in the editor.
                 </div>
                 <div class="form-group">
                     <label>Company Registration No&nbsp;</label>
-                    <input type="text" class="form-control" name="companyReg" id="companyReg" placeholder="" readOnly/>
+                    <input type="text" class="form-control" name="companyReg" id="companyReg" placeholder=""  readOnly/>
                 </div>
                 <div class="form-group">
                     <label>First Name&nbsp;</label>
@@ -167,7 +177,7 @@ and open the template in the editor.
                     <div class="validation-error"></div>
                     <!--  </div> -->
                 </div>
-                
+
                 <div class="form-group">
                     <label>Quantity&nbsp;</label>
                     <input type="text" class="form-control" name="quantity" id="quantity" placeholder="" required/>
@@ -210,13 +220,31 @@ and open the template in the editor.
         while (Array_account) {
             if (Array_account[i][0].toString() === document.getElementById("vendor_id").value) {
                 document.getElementById("companyReg").value = Array_account[i][1].toString();
-                document.getElementById("firstName").value = Array_account[i][1].toString();
-                document.getElementById("lastName").value = Array_account[i][1].toString();
-                document.getElementById("Email").value = Array_account[i][1].toString();
-                document.getElementById("contact").value = Array_account[i][1].toString();
-                document.getElementById("City").value = Array_account[i][1].toString();
-            } 
-                i++;
+                document.getElementById("firstName").value = Array_account[i][2].toString();
+                document.getElementById("lastName").value = Array_account[i][3].toString();
+                document.getElementById("Email").value = Array_account[i][4].toString();
+                document.getElementById("contact").value = Array_account[i][5].toString();
+                select_Companyreg_check_details();
+
             }
+            i++;
+        }
+
+    }
+
+    function select_Companyreg_check_details() {
+        var i = 0;
+        while (Array_account1) {
+            if (Array_account1[i][0].toString() === document.getElementById("companyReg").value) {
+                //document.getElementById("companyReg").value = Array_account[i][1].toString();
+                //document.getElementById("firstName").value = Array_account[i][2].toString();
+                //document.getElementById("lastName").value = Array_account[i][3].toString();
+                //document.getElementById("Email").value = Array_account[i][4].toString();
+                //document.getElementById("contact").value = Array_account[i][5].toString();
+                document.getElementById("city").value = Array_account1[i][5].toString();
+
+            }
+            i++;
+        }
     }
 </script>

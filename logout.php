@@ -3,7 +3,7 @@
     $_SESSION = array();
     session_destroy();
     setcookie ('PHPSESSID', '', time()-3600, '/', '', 0, 0);
-    $url = 'homepage.php'; 
+    $url = 'login.php'; 
     header("Location: $url");
     exit();
 

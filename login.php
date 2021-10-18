@@ -16,7 +16,7 @@ and open the template in the editor.
 
     <style>
         body{
-            background-color: #EAEAEA !important;
+            background-color: #fff !important;
         }
         #login .container #login-row #login-column #login-box {
             margin-top:50px;
@@ -26,7 +26,7 @@ and open the template in the editor.
             max-width: 600px;
             height: 420px;
             border: 1px solid #9C9C9C;
-            background-color: #fff;
+            background-color: #EAEAEA;
         }
         #login .container #login-row #login-column #login-box #login-form {
             padding: 20px;

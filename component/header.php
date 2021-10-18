@@ -57,11 +57,6 @@
         color: #6f849e;
     }
 
-    #header-search-icon{
-        font-size: 40px;
-        cursor: pointer;
-    }
-
     #header-profile-icon{
         font-size: 36px; 
         cursor: pointer;
@@ -110,19 +105,6 @@
         color: #6f849e;
         background-color: #ebebeb;
     }
-
-    /*Search*/
-    .header-search-btn{
-        border: none;
-        background: transparent;
-        outline: none;
-    }
-
-    .header-search-btn:focus, .header-search-btn:hover{
-        color: #6f849e;
-        outline: none;
-    }
-
     #overlay {
         /*margin-top: 160px;*/
         position: fixed;
@@ -138,49 +120,7 @@
         z-index: 1;
     }
 
-    .search-container{
-        position: absolute;
-        background-color: #6f849e;;
-        font-size: 50px;
-        color: white;
-        width: 100%;
-        height: 200px;
-        padding: 20px 100px;
-    }
 
-    .search-close-btn{
-        position: absolute;
-        top: 5px;
-        right: 34px;
-        color: white;
-        cursor: pointer;
-    }
-
-    .search-input-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 120%;
-    }
-
-    #search-input{
-        height: 45%;
-        background: none;
-        border: none;
-        width: 900px;
-        border-bottom: 1px solid white;
-        color: white;
-        font-family: Bodoni MT;
-    }
-
-    #search-input::placeholder{
-        color: white;
-        text-indent: 20px;
-    }
-
-    #search-input:focus{
-        outline: none;
-    }
 </style>
 
 <header id="headerStyle">
@@ -191,7 +131,6 @@
             <div class="header-logo-container">
                 <a href="homepage.php"><img src="pictures/Logo3.png" id="header-logo"/> </a>
             </div>
-
             <div class="header-icon-container">
                 <?php if (isset($_SESSION['position'])): ?>
                     <div class="col customercol justify-content-center d-flex">
@@ -199,104 +138,72 @@
                     </div>
                 <?php endif ?>
                 <br>
-                <div class="header-icon-box">
-                    <!--Search-->
-                    <button class="header-search-btn" onclick="on()">
-                        <i class="material-icons" id="header-search-icon">search</i>
-                    </button>
-                    <div id="overlay">
-                        <div class="search-container">
-                            <div class="search-close-btn"  onclick="off()">
-                                <i class="material-icons">close</i>
-                            </div>
+                <!--Profile-->
+                <button class="header-profile-btn">
+                    <i class="material-icons" id="header-profile-icon">person</i>
+                </button>
+                <div class="dropdown-content-profile">
+                    <?php if (isset($_SESSION['position'])): ?>
 
-                            <div class="search-input-container">
-                                <form action="index.php" method="post" onkeypress="if (event.keyCode === 13) {
-                                            this.submit();
-                                        }">
-                                    <input type="text" placeholder="Search" id="search-input" name="search-input" />
-                                    <!--<input type="submit" name="search"/>-->
-                                </form>
-                            </div>
-
+                        <div id="dropdown-profile-link">
+                            <a href="logout.php">Logout</a>
                         </div>
-                    </div>
 
-                    <!--Profile-->
-                    <button class="header-profile-btn">
-                        <i class="material-icons" id="header-profile-icon">person</i>
-                    </button>
-                    <div class="dropdown-content-profile">
-                        <?php if (isset($_SESSION['staff_id'])): ?>
+                        <div id="dropdown-profile-link">
+                            <a href="change_password.php">Change Password</a>
+                        </div>
 
-                            <div id="dropdown-profile-link">
-                                <a href="logout.php">Logout</a>
-                            </div>
+                        <div id="dropdown-profile-link">
+                            <a href="profile.php">Profile</a>
+                        </div>
 
-                            <div id="dropdown-profile-link">
-                                <a href="change_password.php">Change Password</a>
-                            </div>
 
-                            <div id="dropdown-profile-link">
-                                <a href="profile.php">Profile</a>
-                            </div>
-                            <div id="dropdown-profile-link">
-                                <a href="purchaseHistory.php">History</a>
-                            </div>
+                    <?php endif ?>
 
-                        <?php endif ?>
-
-                        <?php if (!isset($_SESSION['staff_id'])): ?>
-                            <div id="dropdown-profile-link">
-                                <a href="login.php">Login</a>
-                            </div>
-                            <div id="dropdown-profile-link">
-                                <a href="forget_pass.php">Forget Password</a>
-                            </div>
-                        <?php endif ?>
-                    </div>
+                    <?php if (!isset($_SESSION['position'])): ?>
+                        <div id="dropdown-profile-link">
+                            <a href="login.php">Login</a>
+                        </div>
+                        <div id="dropdown-profile-link">
+                            <a href="forget_pass.php">Forget Password</a>
+                        </div>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
-            </header>
+    </div>
+</header>
 
-            <script>
-                // active class
-                $(function (e) {
-                    $('.header-nav a, .header-icon a').filter(function () {
-                        return this.href === location.href;
-                    }).parent().addClass('active').siblings().removeClass('active');
-                    $('.header-nav, .header-icon').click(function () {
-                        $(this).parent().addClass('active').siblings().removeClass('active');
-                    });
-                    e.preventDefault();
-                });
+<script>
+    // active class
+    $(function (e) {
+        $('.header-nav a, .header-icon a').filter(function () {
+            return this.href === location.href;
+        }).parent().addClass('active').siblings().removeClass('active');
+        $('.header-nav, .header-icon').click(function () {
+            $(this).parent().addClass('active').siblings().removeClass('active');
+        });
+        e.preventDefault();
+    });
 
-                // dropdown
-                let dropdownBtn = document.querySelector('.header-profile-btn');
-                let menuContent = document.querySelector('.dropdown-content-profile');
-                dropdownBtn.addEventListener('click', () => {
-                    if (menuContent.style.display === "") {
-                        menuContent.style.display = "block";
-                        dropdownBtn.style.color = "#6f849e";
-                    } else {
-                        menuContent.style.display = "";
-                        dropdownBtn.style.color = "black";
-                    }
-                });
+    // dropdown
+    let dropdownBtn = document.querySelector('.header-profile-btn');
+    let menuContent = document.querySelector('.dropdown-content-profile');
+    dropdownBtn.addEventListener('click', () => {
+        if (menuContent.style.display === "") {
+            menuContent.style.display = "block";
+            dropdownBtn.style.color = "#6f849e";
+        } else {
+            menuContent.style.display = "";
+            dropdownBtn.style.color = "black";
+        }
+    });
 
-                // overlay 
-                function on() {
-                    document.getElementById("overlay").style.display = "block";
-                }
-                function off() {
-                    document.getElementById("overlay").style.display = "none";
-                }
-
-                // search
-                $("#search-input").keyup(function (event) {
-                    if (event.keyCode == 13) {
-                        window.location.replace('productPage.php?category_id=7');
-                    }
-                });
-            </script>
+    // overlay 
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>

@@ -1,110 +1,126 @@
-<div class="span3">
-    <div class="sidebar">
-
-
-        <ul class="widget widget-menu unstyled">
+<section class="app">
+  <aside class="sidebar">
+         <header>
+        Menu
+      </header>
+    <nav class="sidebar-nav">
+ 
+      <ul>
+        <li>
+          <a href="#"><i class="ion-bag"></i> <span>Shop</span></a>
+          <ul class="nav-flyout">
             <li>
-                <a class="collapsed" data-toggle="collapse" href="#togglePages">
-                    <i class="menu-icon icon-cog"></i>
-                    <i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right"></i>
-                    Order Management
-                </a>
-                <ul id="togglePages" class="collapse unstyled">
-                  
-                    <li>
-                        <a href="pending-orders.php">
-                            <i class="icon-tasks"></i>
-                            Pending Orders
-                            <?php
-                            $status = 'Delivered';
-                            $ret = mysqli_query($con, "SELECT * FROM Orders where orderStatus!='$status' || orderStatus is null ");
-                            $num = mysqli_num_rows($ret); {
-                                ?><b class="label orange pull-right"><?php echo htmlentities($num); ?></b>
-                            <?php } ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="delivered-orders.php">
-                            <i class="icon-inbox"></i>
-                            Delivered Orders
-                            <?php
-                            $status = 'Delivered';
-                            $rt = mysqli_query($con, "SELECT * FROM Orders where orderStatus='$status'");
-                            $num1 = mysqli_num_rows($rt); {
-                                ?><b class="label green pull-right"><?php echo htmlentities($num1); ?></b>
-                            <?php } ?>
-
-                        </a>
-                    </li>
-                </ul>
+              <a href="#"><i class="ion-ios-color-filter-outline"></i>Derps</a>
             </li>
-
             <li>
-                <a href="manage-users.php">
-                    <i class="menu-icon icon-group"></i>
-                    Manage users
-                </a>
+              <a href="#"><i class="ion-ios-clock-outline"></i>Times</a>
             </li>
-        </ul>
-
-
-        <ul class="widget widget-menu unstyled">
-            <li><a href="category.php"><i class="menu-icon icon-tasks"></i> Create Category </a></li>
-
-            <li><a href="insert-product.php"><i class="menu-icon icon-paste"></i>Insert Product </a></li>
-            <li><a href="manage-products.php"><i class="menu-icon icon-table"></i>Manage Products </a></li>
-
-        </ul><!--/.widget-nav-->
-        
-          <ul class="widget widget-menu unstyled">
-     
-            <li><a href="manageAdmin.php"><i class="menu-icon icon-table"></i>Add New Admin</a></li>
-
-        </ul><!--/.widget-nav admin-->
-         
-          <ul class="widget widget-menu unstyled ">
             <li>
-                <a class="collapsed1" data-toggle="collapse" href="#togglePages1">
-                    <i class="menu-icon icon-inbox"></i>
-                    <i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right"></i>
-                    Report
-                </a>
-                <ul id="togglePages1" class="collapse unstyled">
-                    <li>
-                        <a href="orderReport.php">               
-                            Orders Report
-  
-                        </a>
-                    </li>
-                    <li>
-                        <a href="allproductReport.php">                          
-                            All Product Report
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="membershipReport.php">
-                           User (Membership Report)
-                          
-
-                        </a>
-                    </li>
-                </ul>
+              <a href="#"><i class="ion-android-star-outline"></i>Hates</a>
             </li>
-
-        </ul>
-
-
-        <ul class="widget widget-menu unstyled">
-            <li><a href="user-logs.php"><i class="menu-icon icon-tasks"></i>User Login Log </a></li>
-
             <li>
-                <a href="logout.php">
-                    <i class="menu-icon icon-signout"></i>
-                    Logout
-                </a>
+              <a href="#"><i class="ion-heart-broken"></i>Beat</a>
             </li>
-        </ul>
-
-    </div><!--/.sidebar-->
-</div><!--/.span3-->
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="ion-ios-settings"></i> <span class="">Controls</span></a>
+          <ul class="nav-flyout">
+            <li>
+              <a href="#"><i class="ion-ios-alarm-outline"></i>Watch</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-camera-outline"></i>Creeper</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-chatboxes-outline"></i>Hate</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-cog-outline"></i>Grinder</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="ion-ios-briefcase-outline"></i> <span class="">Folio</span></a>
+          <ul class="nav-flyout">
+            <li>
+              <a href="#"><i class="ion-ios-flame-outline"></i>Burn</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-lightbulb-outline"></i>Bulbs</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-location-outline"></i>Where You</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-locked-outline"></i>On Lock</a>
+            </li>
+             <li>
+              <a href="#"><i class="ion-ios-navigate-outline"></i>Ghostface</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="ion-ios-analytics-outline"></i> <span class="">Graphicals</span></a>
+          <ul class="nav-flyout">
+            <li>
+              <a href="#"><i class="ion-ios-timer-outline"></i>Timers</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-arrow-graph-down-left"></i>You Lose</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-partlysunny-outline"></i>Stormy</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-timer-outline"></i>Lookie Look</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-game-controller-a-outline"></i>Dork Mfer</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="ion-ios-paper-outline"></i> <span class="">Papers</span></a>
+          <ul class="nav-flyout">
+            <li>
+              <a href="#"><i class="ion-ios-filing-outline"></i>File Cab</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-information-outline"></i>Infos</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-paperplane-outline"></i>Planes</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-android-star-outline"></i>Shop</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="ion-ios-navigate-outline"></i> <span class="">Ass Finder</span></a>
+          <ul class="nav-flyout">
+            <li>
+              <a href="#"><i class="ion-ios-flame-outline"></i>Burn</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-lightbulb-outline"></i>Bulbs</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-location-outline"></i>Where You</a>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-locked-outline"></i>On Lock</a>
+            </li>
+             <li>
+              <a href="#"><i class="ion-ios-navigate-outline"></i>Ghostface</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="ion-ios-medical-outline"></i> <span class="">Cocaine</span></a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+</section>

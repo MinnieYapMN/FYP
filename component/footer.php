@@ -226,12 +226,6 @@
                 <div class="footerBtn" onclick="window.location.href='profile.php'">
                     Profile
                 </div>
-                
-                <div class="footerLine"></div>
-                
-                <div class="footerBtn" onclick="window.location.href='purchaseHistory.php'">
-                    History
-                </div>
             </div>
             <div class="footer-copyright">
                 © 2021 Copyright GO Uniform Trading SDN BHD

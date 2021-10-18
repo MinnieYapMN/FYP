@@ -16,7 +16,7 @@ and open the template in the editor.
 
     <style>
         body{
-            background-color: #EAEAEA !important;
+            background-color: #fff !important;
         }
         #login .container #login-row #login-column #login-box {
             margin-top:50px;
@@ -26,7 +26,7 @@ and open the template in the editor.
             max-width: 600px;
             height: 420px;
             border: 1px solid #9C9C9C;
-            background-color: #fff;
+            background-color: #EAEAEA;
         }
         #login .container #login-row #login-column #login-box #login-form {
             padding: 20px;
@@ -48,37 +48,37 @@ and open the template in the editor.
         $error = array();
         require("component/mysqli_connect.php");
 
-        $user_id = FALSE;
+        $staff_ID = FALSE;
 
         if (!empty($_POST['forget_email'])) {
-            $q = 'SELECT id FROM users WHERE email ="' . mysqli_real_escape_string($dbc, $_POST['forget_email']) . '"';
+            $q = 'SELECT staff_ID FROM staff WHERE email ="' . mysqli_real_escape_string($dbc, $_POST['forget_email']) . '"';
             $r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 
             if (mysqli_num_rows($r) == 1) {
-                list($user_id) = mysqli_fetch_array($r, MYSQLI_NUM);
+                list($staff_ID) = mysqli_fetch_array($r, MYSQLI_NUM);
             } else {
                 $error[] = "The submitted email address does not match those on file.";
             }
         } else {
             $error = "You forget to enter email.";
         }
-        if ($user_id) {
+        if ($staff_ID) {
 
             $temp_password = substr(md5(uniqid(rand(), true)), 3, 10);
 
 
-            $query = "UPDATE users SET password =SHA1('$temp_password') WHERE id=$user_id LIMIT 1";
+            $query = "UPDATE staff SET password =SHA1('$temp_password') WHERE staff_ID=$staff_ID LIMIT 1";
             $row = mysqli_query($dbc, $query) or trigger_error("Query: $query\n<br />MySQL Error: " . mysqli_error($dbc));
 
             if (mysqli_affected_rows($dbc) == 1) {
                 $body = "Your password to log into <whatever site> has been temporarily changed to '$temp_password'. Please log in using this password and this email address. You may change your password after login.";
-                mail($_POST['forget_email'], 'Your temporary password.', $body, 'From: ff@gmail.com');
+                mail($_POST['forget_email'], 'Your temporary password.', $body, 'From: go@gmail.com');
 
 
                 $success = 'Your temporary password is sent to your email. Please change your password after you login with temporary password.';
                 mysqli_close($dbc);
             } else {
-                $error[] = "Your password could not be changed due to a system error. We apologize for any inconvenience. $user_id";
+                $error[] = "Your password could not be changed due to a system error. We apologize for any inconvenience. $staff_ID";
             }
         } else {
             $error[] = "Please try again.";

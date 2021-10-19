@@ -20,14 +20,13 @@ if ($result1->num_rows > 0) {
 }
 echo '<script>var Array_account1 = ' . json_encode($Array_account1) . ';</script>';
 if (isset($_POST['submit'])) {
-    $pr_id = $_POST['pr_id'];
+    $Quantity = $_POST['Quantity'];
     $material_details = $_POST['material_details'];
     $deadline = $_POST['deadline'];
     $delivery_date = $_POST['delivery_date'];
     $vendor_address = $_POST['vendor_address'];
 
-    $query = mysqli_query($dbc, "insert into rfq(pr_id,material_details,deadline,delivery_date,vendor_address) values('$pr_id','$material_details','$deadline','$delivery_date','$vendor_address')");
-    $query1 = "UPDATE rfq SET vendor_address='$vendor_address' WHERE rfq_ID=$rfq_ID LIMIT 1";
+    $query = mysqli_query($dbc, "insert into rfq(material_details,deadline,delivery_date,vendor_address,Quantity) values('$material_details','$deadline','$delivery_date','$vendor_address',' $Quantity)");
     if ($query) {
         echo "<script>alert('You are successfully created!');</script>";
     } else {
@@ -82,11 +81,11 @@ and open the template in the editor.
 
         .btn-primary{
             color: white;
-            background-color: #0084B9;
+            background-color: #e56c82;
         }
 
         .btn-primary:hover{
-            background-color: #285e8e;
+            background-color: #0084B9;
         }
 
         .btn-default{
@@ -103,22 +102,23 @@ and open the template in the editor.
             padding: 0 0 1px 0; /* assuming footer of height 100px */
         }
 
+
     </style>
     <body>
         <?php include "component/header.php"; ?>
         <section class="header domReload">
-            <h1>Request For Quotation</h1>
+            <h1>Request For Quotation</h1>  
+            <a href="RFQwithPR.php" class="btn btn-primary text-white">With Purchase Requisition</a> 
             <div class="content">
                 <div class="intro copy">
-                    <p>Please fill in <strong>ALL</strong>the details below.<br></p>
-                    <a href="RFQ.php" class="btn btn-primary text-white">Without Purchase Requisition</a> 
+                    <p>Please fill in <strong>ALL</strong>the details below.</p>
+
                 </div>
         </section>
         <div class="content">
             <form id="supplier-registration-form" name="rfq" data-track-form-name="rfq-form" class="form-horizontal clearfix" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="language" value="" />
 
-                <br>
                 <h2>Vendor Details</h2>   
 
                 <div class="form-group">
@@ -158,10 +158,12 @@ and open the template in the editor.
                     <input type="text" class="form-control" name="contact" id="contact" placeholder="" readOnly/>
                 </div>
                 <div class="form-group">
-                    <label>City&nbsp;</label>
-                    <input type="text" class="form-control" name="city" id="city" placeholder="" readOnly/>
-                </div>
-
+                    <label id="fld-goods-description-label" for="fld-goods-description" class="col-sm-3 control-label">Vendor Address&nbsp;*</label>
+                    <!--  <div class="col-sm-9"> -->
+                    <textarea id="vendor_address" name="vendor_address" class="input-text form-control" rows="5" required></textarea>
+                    <div class="validation-error"></div>
+                    <!--  </div> -->
+                </div> 
                 <h2>Goods &amp; Services:</h2>
 
                 <div class="form-group">
@@ -180,33 +182,49 @@ and open the template in the editor.
 
                 <div class="form-group">
                     <label>Quantity&nbsp;</label>
-                    <input type="text" class="form-control" name="quantity" id="quantity" placeholder="" required/>
+                    <input type="text" class="form-control" name="Quantity" id="Quantity" placeholder="" required/>
                 </div>
                 <div class="form-group">
-                    <label id="fld-goods-description-label" for="fld-goods-description" class="col-sm-3 control-label">Describe, if possible...&nbsp;*</label>
+                    <label id="material_details" for="fld-pcn-group" class="col-sm-3 control-label">Materials&nbsp;*</label>
                     <!--  <div class="col-sm-9"> -->
-                    <textarea id="fld-goods-description" name="material_details" class="input-text form-control" rows="7"></textarea>
+                    <select id="material_details" name="material_details" class="input-text form-control" required>
+                        <option value="">--Please choose an option--</option>
+                        <option name="cotton" value="cotton">Cotton</option>
+                        <option name="polyester" value="polyester">Polyester</option>
+                        <option name="cotton_polyester_blend" value="cotton_polyester_blend">Cotton/Polyester Blend</option>
+                        <option name="cotton_fabric" value="cotton_fabric">Cotton Fabric</option>
+                    </select>
+                   <!--  <input id="fld-language" name="productGrp" type="hidden" value=""/>-->
                     <div class="validation-error"></div>
                     <!--  </div> -->
-                </div> 
+                </div>
                 <div class="form-group">
                     <label id="fld-region-label" for="fld-date" class="col-sm-3 control-label">Delivery date&nbsp;*</label>
                     <!--  <div class="col-sm-9"> -->
-                    <input id="fld-region" name="date" class="input-text form-control" type="text" value=""/>
+                    <input id="delivery_date" name="delivery_date" class="input-text form-control" type="text" value="" required/>
                     <div class="validation-error"></div>
                     <!--  </div> -->
                 </div>
                 <div class="form-group">
                     <label id="fld-region-label" for="fld-deadline" class="col-sm-3 control-label">Deadline&nbsp;*</label>
                     <!--  <div class="col-sm-9"> -->
-                    <input id="fld-region" name="date" class="input-text form-control" type="text" value=""/>
+                    <input id="deadline" name="deadline" class="input-text form-control" type="text" value=""required/>
                     <div class="validation-error"></div>
                     <!--  </div> -->
                 </div>
+                <br>
+                <div class="form-group" style="float: right">
+                    <!--  <div class="buttons col-sm-9 col-sm-push-3"> -->
+                    <button id="submit" type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+                    <button type="reset" class="btn btn-default" type="submit" value="submit">Clear</button>
+
+                </div>
             </form>
         </div>
-
+        <br>
+        <br>
     </body>
+
     <div id="footer" style="width: 100%">
         <hr size="1" noshade="noshade" />
         <?php include "component/footer.php"; ?>
@@ -224,27 +242,10 @@ and open the template in the editor.
                 document.getElementById("lastName").value = Array_account[i][3].toString();
                 document.getElementById("Email").value = Array_account[i][4].toString();
                 document.getElementById("contact").value = Array_account[i][5].toString();
-                select_Companyreg_check_details();
-
             }
             i++;
         }
 
     }
 
-    function select_Companyreg_check_details() {
-        var i = 0;
-        while (Array_account1) {
-            if (Array_account1[i][0].toString() === document.getElementById("companyReg").value) {
-                //document.getElementById("companyReg").value = Array_account[i][1].toString();
-                //document.getElementById("firstName").value = Array_account[i][2].toString();
-                //document.getElementById("lastName").value = Array_account[i][3].toString();
-                //document.getElementById("Email").value = Array_account[i][4].toString();
-                //document.getElementById("contact").value = Array_account[i][5].toString();
-                document.getElementById("city").value = Array_account1[i][5].toString();
-
-            }
-            i++;
-        }
-    }
 </script>

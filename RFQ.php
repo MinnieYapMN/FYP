@@ -1,11 +1,8 @@
 <?php
 require('component/mysqli_connect.php');
 $Array_account = array();
-$Array_account1 = array();
 $sql = "SELECT * FROM vendor";
-$sql1 = "SELECT * FROM company";
 $result = $dbc->query($sql);
-$result1 = $dbc->query($sql1);
 if ($result->num_rows > 0) {
     while ($row = mysqli_fetch_array($result)) {
         array_push($Array_account, $row);
@@ -13,20 +10,17 @@ if ($result->num_rows > 0) {
 }
 echo '<script>var Array_account = ' . json_encode($Array_account) . ';</script>';
 
-if ($result1->num_rows > 0) {
-    while ($row = mysqli_fetch_array($result1)) {
-        array_push($Array_account1, $row);
-    }
-}
-echo '<script>var Array_account1 = ' . json_encode($Array_account1) . ';</script>';
+
 if (isset($_POST['submit'])) {
-    $Quantity = $_POST['Quantity'];
+    $vendor_id = $_POST['vendor_id'];
+    $productGrp = $_POST['productGrp'];
     $material_details = $_POST['material_details'];
     $deadline = $_POST['deadline'];
     $delivery_date = $_POST['delivery_date'];
     $vendor_address = $_POST['vendor_address'];
+    $quantity_request = $_POST['quantity_request'];
 
-    $query = mysqli_query($dbc, "insert into rfq(material_details,deadline,delivery_date,vendor_address,Quantity) values('$material_details','$deadline','$delivery_date','$vendor_address',' $Quantity)");
+    $query = mysqli_query($dbc, "insert into rfq(vendor_id,productGrp,material_details,deadline,delivery_date,vendor_address,quantity_request) values($vendor_id','$productGrp'$material_details','$deadline','$delivery_date','$vendor_address',' $quantity_request)");
     if ($query) {
         echo "<script>alert('You are successfully created!');</script>";
     } else {
@@ -182,7 +176,7 @@ and open the template in the editor.
 
                 <div class="form-group">
                     <label>Quantity&nbsp;</label>
-                    <input type="text" class="form-control" name="Quantity" id="Quantity" placeholder="" required/>
+                    <input type="text" class="form-control" name="quantity_request" id="quantity_request" placeholder="" required/>
                 </div>
                 <div class="form-group">
                     <label id="material_details" for="fld-pcn-group" class="col-sm-3 control-label">Materials&nbsp;*</label>

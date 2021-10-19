@@ -1,23 +1,35 @@
 <?php
 require('component/mysqli_connect.php');
 $Array_account = array();
+$Array_account1 = array();
 $sql = "SELECT * FROM vendor";
+$sql1 = "SELECT * FROM purchase_requisition_details";
 $result = $dbc->query($sql);
+$result1 = $dbc->query($sql1);
 if ($result->num_rows > 0) {
     while ($row = mysqli_fetch_array($result)) {
         array_push($Array_account, $row);
     }
 }
 echo '<script>var Array_account = ' . json_encode($Array_account) . ';</script>';
+
+if ($result1->num_rows > 0) {
+    while ($row = mysqli_fetch_array($result1)) {
+        array_push($Array_account1, $row);
+    }
+}
+echo '<script>var Array_account1 = ' . json_encode($Array_account1) . ';</script>';
+
 if (isset($_POST['submit'])) {
-    $pr_id = $_POST['pr_ID'];
-    $quantity = $_POST['quantity'];
+    $pr_ID = $_POST['pr_ID'];
+    $vendor_id = $_POST['vendor_id'];
     $material_details = $_POST['material_details'];
     $deadline = $_POST['deadline'];
     $delivery_date = $_POST['delivery_date'];
     $vendor_address = $_POST['vendor_address'];
-    
-   $query = mysqli_query($dbc, "insert into rfq(pr_ID,material_details,deadline,delivery_date,vendor_address,quantity) values('$pr_ID',$material_details','$deadline','$delivery_date','$vendor_address',' $quantity)");
+    $quantity_request = $_POST['quantity_request'];
+
+    $query = mysqli_query($dbc, "insert into rfq(pr_ID,vendor_id,material_details,deadline,delivery_date,vendor_address,quantity_request) values('$pr_ID','$vendor_id',$material_details','$deadline','$delivery_date','$vendor_address',' $quantity_request)");
     if ($query) {
         echo "<script>alert('You are successfully created!');</script>";
     } else {
@@ -172,12 +184,12 @@ and open the template in the editor.
                 </div>
                 <div class="form-group">
                     <label>Purchase Requisition ID</label>
-                    <select class="form-control" name="pr_ID" id="pr_ID" onchange="select_id_check_name()" onclick="select_id_check_name()">
+                    <select class="form-control" name="pr_ID" id="pr_ID" onchange="select_id_check_quantity()" onclick="select_id_check_quantity()">
                         <?php
-                        $sql = "SELECT * FROM purchase_requisiton_details";
-                        $result = $dbc->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = mysqli_fetch_array($result)) {
+                        $sql1 = "SELECT * FROM purchase_requisition_details";
+                        $result1 = $dbc->query($sql1);
+                        if ($result1->num_rows > 0) {
+                            while ($row = mysqli_fetch_array($result1)) {
                                 echo "<option value=" . $row["pr_ID"] . ">" . $row["pr_ID"] . "</option>";
                             }
                         } else {
@@ -254,7 +266,7 @@ and open the template in the editor.
         }
 
     }
-    function select_Qauntity_check_details() {
+    function select_id_check_quantity() {
         var i = 0;
         while (Array_account1) {
             if (Array_account1[i][0].toString() === document.getElementById("pr_ID").value) {
